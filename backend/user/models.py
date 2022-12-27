@@ -4,8 +4,8 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class User(models.Model):
-    f_name = models.CharField(max_length=10, blank=False)
-    l_name = models.CharField(max_length=10, blank=False)
-    profile_pic = models.URLField()
-    email = models.EmailField(max_length=50, blank=False)
-    password = models.CharField(max_length=15, blank=False)
+    f_name = models.CharField(max_length=30)
+    l_name = models.CharField(max_length=30)
+    profile_pic = models.URLField(max_length=10000)
+    email = models.EmailField(max_length=100)
+    password = models.CharField(max_length=50)
