@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
+from rest_framework.decorators import api_view
 from .models import User
 from .serializer import UserSerializer
+from django.http import JsonResponse
 
 # Create your views here.
+
+
+
 class createUser(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer

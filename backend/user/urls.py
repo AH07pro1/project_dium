@@ -5,5 +5,5 @@ urlpatterns = [
     path("users/create", views.create_user),
     path("users/<int:pk>", views.detail_user),
     path("users/<int:pk>/delete", views.delete_user),
-    path("users/<int:pk>/delete", views.updateUser)
+    path("users/<int:pk>/update", views.update_user)
 ]
