@@ -22,7 +22,23 @@ class detailUser(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = "pk"
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
 detail_user = detailUser.as_view()
 
+class deleteUser(generics.DestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "pk"
+    permission_classes = [permissions.IsAdminUser]
+
+delete_user = deleteUser.as_view()
+
+
+class updateUser(generics.UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "pk"
+    permission_classes = [permissions.IsAuthenticated]
+
+update_user = updateUser.as_view()
