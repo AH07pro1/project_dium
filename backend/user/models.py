@@ -15,9 +15,10 @@ class User(models.Model):
     password = models.CharField(max_length=25)
     # friends = ArrayField(tag , blank=False)
 
+    nums = [i for i in range(10, 80)]
+    random_num = choice(nums)
+
     @property
     def tag(self):
-        nums = [i for i in range(10, 80)]
-        random_num = choice(nums)
-        tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{random_num}"
+        tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{self.random_num}"
         return tag
