@@ -15,7 +15,7 @@ class User(models.Model):
     profile_pic = models.URLField(max_length=10000)
     email = models.EmailField(max_length=100)
     password = models.CharField(max_length=25)
-    friends = ArrayField(user_tag, blank=False)
+    # friends = ArrayField(user_tag, blank=False)
 
     @property
     def tag(self) -> str:
