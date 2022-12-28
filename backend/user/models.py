@@ -19,5 +19,5 @@ class User(models.Model):
 
     @property
     def tag(self) -> str:
-        tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{self.random_num}"
+        tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{random_num}"
         return tag
