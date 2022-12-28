@@ -3,6 +3,8 @@ from django.contrib.postgres.fields import ArrayField
 from random import choice
 # Create your models here.
 
+nums = [i for i in range(10, 80)]
+random_num = choice(nums)
 
 class User(models.Model):
 
@@ -13,12 +15,9 @@ class User(models.Model):
     profile_pic = models.URLField(max_length=10000)
     email = models.EmailField(max_length=100)
     password = models.CharField(max_length=25)
-    # friends = ArrayField(tag , blank=False)
-
-    nums = [i for i in range(10, 80)]
-    random_num = choice(nums)
+    friends = ArrayField(user_tag, blank=False)
 
     @property
-    def tag(self):
+    def tag(self) -> str:
         tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{self.random_num}"
         return tag
