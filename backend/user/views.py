@@ -21,12 +21,14 @@ class listUser(generics.ListAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAdminUser]
 
+
 list_user = listUser.as_view()
 
 class detailUser(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = "pk"
+
     permission_classes = [permissions.IsAuthenticated]
 
 detail_user = detailUser.as_view()
