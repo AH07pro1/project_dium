@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-from random import randint
+from random import choice
 # Create your models here.
 
 
@@ -17,6 +17,7 @@ class User(models.Model):
 
     @property
     def tag(self):
-        random_num = randint(10, 80)
+        nums = [i for i in range(10, 80)]
+        random_num = choice(nums)
         tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{random_num}"
         return tag
