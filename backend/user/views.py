@@ -21,6 +21,7 @@ class listUser(generics.ListAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAdminUser]
 
+
 list_user = listUser.as_view()
 
 class detailUser(generics.RetrieveAPIView):
