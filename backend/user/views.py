@@ -27,7 +27,9 @@ list_user = listUser.as_view()
 class detailUser(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    lookup_field = "pk"
+    # lookup_field = "pk"
+    lookup_field = "usertag"
+    lookup_url_kwarg = "username"
 
     permission_classes = [permissions.IsAuthenticated]
 
