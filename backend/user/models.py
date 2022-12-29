@@ -10,7 +10,7 @@ class User(models.Model):
 
     f_name = models.CharField(max_length=15)
     l_name = models.CharField(max_length=15)
-    usertag = models.CharField(max_length=7)
+    user_tag = models.CharField(max_length=6, editable=False)
     level = models.IntegerField(default=1)
     profile_pic = models.URLField(max_length=10000)
     email = models.EmailField(max_length=100)
