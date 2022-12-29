@@ -10,6 +10,5 @@ class UserSerializer(serializers.ModelSerializer):
             "profile_pic",
             "email",
             "password",
-            'user_tag'
-            # 'tag'
+            'tag'
         ]
