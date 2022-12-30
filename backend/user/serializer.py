@@ -12,5 +12,4 @@ class UserSerializer(serializers.ModelSerializer):
             "password",
             'usertag',
             'level',
-            "friends"
         ]

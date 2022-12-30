@@ -15,8 +15,10 @@ class User(models.Model):
     profile_pic = models.URLField(max_length=10000)
     email = models.EmailField(max_length=100)
     password = models.CharField(max_length=25)
-    # friends = ArrayField(models.CharField(max_length=7, default="$%$%$%"))
-
+    # pending_friends = ArrayField(models.CharField(max_length=7, default="$%$%$%"), blank=True, default=list)
+    # accepted_friends = ArrayField(models.CharField(max_length=7, default="$%$%$%"), blank=True, default=list)
+    # pending_friends = models.JSONField()
+    # accepted_friends = models.JSONField()
     # @property
     # def tag(self) -> str:
     #     tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{random_num}"

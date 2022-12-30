@@ -94,8 +94,8 @@ DATABASES = {
 #         'NAME': 'DATABASE NAME',
 #         'USER': 'USER NAME',
 #         'PASSWORD': 'USER PASSWORD',
-#         'HOST': 'localhost',
-#         'PORT': '8000',
+#         # 'HOST': 'localhost',
+#         # 'PORT': '5432',
 #     }
 # }
 
