@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
 from rest_framework.decorators import api_view
-from .models import User
-from .serializer import UserSerializer
+from .models import User, Invites
+from .serializer import UserSerializer, InviteSerializer
 from django.http import JsonResponse
 
 
@@ -54,3 +54,11 @@ class updateUser(generics.UpdateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 update_user = updateUser.as_view()
+
+class Invites(generics.CreateAPIView):
+    queryset = Invites.objects.all()
+    serializer_class = InviteSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+invites = Invites.as_view()
+

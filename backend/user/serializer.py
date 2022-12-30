@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Invites
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,9 +12,13 @@ class UserSerializer(serializers.ModelSerializer):
             "password",
             'usertag',
             'level',
-            'pending_invites',
-            'accepted_invites'
         ]
+
+class InviteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Invites 
+        fields = "__all__"
+
 
 
 #add friends later
