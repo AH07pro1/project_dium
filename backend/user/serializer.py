@@ -11,7 +11,9 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "password",
             'usertag',
-            'level'
+            'level',
+            'pending_invites',
+            'accepted_invites'
         ]
 
 
