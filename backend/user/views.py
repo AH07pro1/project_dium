@@ -39,7 +39,8 @@ detail_user = detailUser.as_view()
 class deleteUser(generics.DestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    lookup_field = "pk"
+    lookup_field = "usertag"
+    lookup_url_kwarg = "username"
     permission_classes = [permissions.IsAdminUser]
 
 delete_user = deleteUser.as_view()
@@ -48,7 +49,8 @@ delete_user = deleteUser.as_view()
 class updateUser(generics.UpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    lookup_field = "pk"
+    lookup_field = "usertag"
+    lookup_url_kwarg = "username"
     permission_classes = [permissions.IsAuthenticated]
 
 update_user = updateUser.as_view()
