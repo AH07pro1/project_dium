@@ -11,6 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "password",
             'usertag',
+            'level'
         ]
 
 
