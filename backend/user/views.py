@@ -90,3 +90,23 @@ class createreceivedInvite(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 create_received_invites = createreceivedInvite.as_view()
+
+class specificreceivedInvite(generics.UpdateAPIView):
+    queryset = receivedInvites.objects.all()
+    serializer_class = ReceivedInvitesSerializer
+    lookup_field = "from_user"
+    lookup_url_kwarg = "from_username"
+    permission_classes = [permissions.IsAuthenticated]
+
+specific_received_invites = specificreceivedInvite.as_view()
+
+
+class specificsendInvite(generics.UpdateAPIView):
+    queryset = sentInvites.objects.all()
+    serializer_class = SentInvitesSerializer
+    lookup_field = "sent_to"
+    lookup_url_kwarg = "sent_to_username"
+    permission_classes = [permissions.IsAuthenticated]
+
+specific_sent_invites = specificsendInvite.as_view()
+

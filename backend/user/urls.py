@@ -9,7 +9,9 @@ urlpatterns = [
     path("users/<str:username>/sent_invites", views.list_sent_invites),
     path("users/<str:username>/sent_invites/create", views.create_sent_invites),
     path("users/<str:username>/received_invites", views.list_received_invites),
-    path("users/<str:username>/received_invites/create", views.create_received_invites)
+    path("users/<str:username>/received_invites/create", views.create_received_invites),
+    path("users/<str:username>/received_invites/<str:from_username>", views.specific_received_invites),
+    path("users/<str:username>/sent_invites/<str:sent_to_username>", views.specific_sent_invites)
     #pint
 
 ]

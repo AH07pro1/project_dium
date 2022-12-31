@@ -21,12 +21,12 @@ class User(models.Model):
 
 class sentInvites(models.Model):
     choices = [("P", "PENDING"), ("A", "ACCEPTED"), ("D", "DECLINED")]
-    sent_to = models.CharField(max_length=7) # User tag
+    sent_to = models.CharField(max_length=7, editable=False) # User tag
     invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
 
 class receivedInvites(models.Model):
     choices = [("P", "PENDING"), ("A", "ACCEPTED"), ("D", "DECLINED")]
-    from_user = models.CharField(max_length=7) # User tag
+    from_user = models.CharField(max_length=7, editable=False) # User tag
     invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
 
 
