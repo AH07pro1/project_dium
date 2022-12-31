@@ -18,8 +18,3 @@ class SentInvitesSerializer(serializers.ModelSerializer):
     class Meta:
         model = sentInvites
         fields = "__all__"
-
-
-
-
-#add friends later
