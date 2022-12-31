@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
 from rest_framework.decorators import api_view
-from .models import User, sentInvites
-from .serializer import UserSerializer, SentInvitesSerializer
+from .models import User, sentInvites, receivedInvites
+from .serializer import UserSerializer, SentInvitesSerializer, ReceivedInvitesSerializer
 from django.http import JsonResponse
 
 
@@ -72,3 +72,21 @@ class createsentInvites(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 create_sent_invites = createsentInvites.as_view()
+
+class receivedInviteList(generics.ListAPIView):
+    queryset = receivedInvites.objects.all()
+    serializer_class = ReceivedInvitesSerializer
+    lookup_field = "usertag"
+    lookup_url_kwarg = "username"
+    permission_classes = [permissions.IsAuthenticated]
+
+list_received_invites = receivedInviteList.as_view()
+
+class createreceivedInvite(generics.CreateAPIView):
+    queryset = receivedInvites.objects.all()
+    serializer_class = ReceivedInvitesSerializer
+    lookup_field = "usertag"
+    lookup_url_kwarg = "username"
+    permission_classes = [permissions.IsAuthenticated]
+
+create_received_invites = createreceivedInvite.as_view()
