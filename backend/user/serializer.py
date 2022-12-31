@@ -14,15 +14,12 @@ class UserSerializer(serializers.ModelSerializer):
             'level',
         ]
 
-# class InviteSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Invites 
-#         fields = "__all__"
-
-
 class SentInvitesSerializer(serializers.ModelSerializer):
     class Meta:
         model = sentInvites
         fields = "__all__"
+
+
+
 
 #add friends later

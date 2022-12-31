@@ -9,4 +9,5 @@ urlpatterns = [
     path("users/<str:username>/sent_invites", views.list_sent_invites),
     path("users/<str:username>/sent_invites/create", views.create_sent_invites)
     #pint
+
 ]

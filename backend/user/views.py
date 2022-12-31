@@ -72,4 +72,3 @@ class createsentInvites(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 create_sent_invites = createsentInvites.as_view()
-
