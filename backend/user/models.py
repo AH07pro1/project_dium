@@ -24,4 +24,9 @@ class sentInvites(models.Model):
     sent_to = models.CharField(max_length=7) # User tag
     invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
 
+class receivedInvites(models.Model):
+    choices = [("P", "PENDING"), ("A", "ACCEPTED"), ("D", "DECLINED")]
+    from_user = models.CharField(max_length=7) # User tag
+    invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
+
 

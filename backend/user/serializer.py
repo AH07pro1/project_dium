@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, sentInvites
+from .models import User, sentInvites, receivedInvites
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,4 +17,9 @@ class UserSerializer(serializers.ModelSerializer):
 class SentInvitesSerializer(serializers.ModelSerializer):
     class Meta:
         model = sentInvites
+        fields = "__all__"
+
+class ReceivedInvitesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = receivedInvites
         fields = "__all__"
