@@ -19,6 +19,7 @@ class User(models.Model):
     #     tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{random_num}"
     #     return tag
 
-class Invites(models.Model):
-    pending_invites = models.JSONField(default=list)
-    accepted_invites = models.JSONField(default=list)
+class sentInvites(models.Model):
+    choices = [("P", "PENDING"), ("A", "ACCEPTED"), ("D", "DECLINED")]
+    sent_to = models.CharField(max_length=7) # User tag
+    invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
