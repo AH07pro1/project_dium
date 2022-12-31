@@ -55,10 +55,13 @@ class updateUser(generics.UpdateAPIView):
 
 update_user = updateUser.as_view()
 
-class Invites(generics.CreateAPIView):
+class Invites(generics.UpdateAPIView):
     queryset = Invites.objects.all()
     serializer_class = InviteSerializer
     permission_classes = [permissions.IsAuthenticated]
+    lookup_field = "usertag"
+    lookup_url_kwarg = "username"
+
 
 invites = Invites.as_view()
 
