@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
 from rest_framework.decorators import api_view
-from .models import User, Invites
-from .serializer import UserSerializer, InviteSerializer
+from .models import User, sentInvites
+from .serializer import UserSerializer, SentInvitesSerializer
 from django.http import JsonResponse
 
 
@@ -55,21 +55,23 @@ class updateUser(generics.UpdateAPIView):
 
 update_user = updateUser.as_view()
 
-<<<<<<< HEAD
-class Invites(generics.UpdateAPIView):
-    queryset = Invites.objects.all()
-    serializer_class = InviteSerializer
-    permission_classes = [permissions.IsAuthenticated]
+class listsentInvites(generics.ListAPIView):
+    queryset = sentInvites.objects.all()
+    serializer_class = SentInvitesSerializer
     lookup_field = "usertag"
     lookup_url_kwarg = "username"
-
-
-=======
-class Invites(generics.CreateAPIView):
-    queryset = Invites.objects.all()
-    serializer_class = InviteSerializer
     permission_classes = [permissions.IsAuthenticated]
 
->>>>>>> parent of 63a38f1 (send invites)
-invites = Invites.as_view()
+list_sent_invites = listsentInvites.as_view()
+
+class createsentInvites(generics.CreateAPIView):
+    queryset = sentInvites.objects.all()
+    serializer_class = SentInvitesSerializer
+    lookup_field = "usertag"
+    lookup_url_kwarg = "username"
+    permission_classes = [permissions.IsAuthenticated]
+
+create_sent_invites = createsentInvites.as_view()
+
+
 
