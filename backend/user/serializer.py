@@ -17,7 +17,13 @@ class UserSerializer(serializers.ModelSerializer):
 class InviteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invites 
+<<<<<<< HEAD
         fields = ["pending_invites", "accepted_invites", "usertag"]
+
+
+=======
+        fields = "__all__"
+>>>>>>> parent of 63a38f1 (send invites)
 
 
 

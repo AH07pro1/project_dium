@@ -55,6 +55,7 @@ class updateUser(generics.UpdateAPIView):
 
 update_user = updateUser.as_view()
 
+<<<<<<< HEAD
 class Invites(generics.UpdateAPIView):
     queryset = Invites.objects.all()
     serializer_class = InviteSerializer
@@ -63,5 +64,12 @@ class Invites(generics.UpdateAPIView):
     lookup_url_kwarg = "username"
 
 
+=======
+class Invites(generics.CreateAPIView):
+    queryset = Invites.objects.all()
+    serializer_class = InviteSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+>>>>>>> parent of 63a38f1 (send invites)
 invites = Invites.as_view()
 

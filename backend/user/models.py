@@ -21,9 +21,13 @@ class User(models.Model):
 
 class Invites(models.Model):
     pending_invites = models.JSONField(default=list)
+<<<<<<< HEAD
     accepted_invites = models.JSONField(default=list)
 
     @property
     def usertag(self):
         print(User.usertag)
         return User.usertag
+=======
+    accepted_invites = models.JSONField(default=list)
+>>>>>>> parent of 63a38f1 (send invites)
