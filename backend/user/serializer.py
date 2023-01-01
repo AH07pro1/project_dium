@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, invites
+from .models import User, invites, friend
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,3 +18,9 @@ class InviteSerializer(serializers.ModelSerializer):
     class Meta:
         model = invites
         fields = "__all__"
+
+class FriendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = friend
+        fields = "__all__"
+

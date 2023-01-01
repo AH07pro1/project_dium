@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
 from rest_framework.decorators import api_view
-from .models import User, invites
-from .serializer import UserSerializer, InviteSerializer
+from .models import User, invites, friend
+from .serializer import UserSerializer, InviteSerializer, FriendSerializer
 from django.http import JsonResponse
 
 
@@ -79,3 +79,22 @@ class updateInvites(generics.UpdateAPIView):
     lookup_url_kwarg = "inviter"
 
 update_invites = updateInvites.as_view()
+
+
+class listFriends(generics.ListAPIView):
+    queryset = friend.objects.all()
+    serializer_class = FriendSerializer   # home/users/$rahi76/friends
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = "my_tag"
+    lookup_url_kwarg = "username"
+
+list_friends = listFriends.as_view()
+
+class createFriends(generics.CreateAPIView):
+    queryset = friend.objects.all()
+    serializer_class = FriendSerializer   # home/users/$rahi76/friends
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = "my_tag"
+    lookup_url_kwarg = "username"
+
+create_friends = createFriends.as_view()

@@ -31,3 +31,6 @@ class invites(models.Model):
     invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
 
 
+class friend(models.Model):
+    my_tag = User.usertag
+    friend_tag = models.CharField(max_length=7, primary_key=True)
