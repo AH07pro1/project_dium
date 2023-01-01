@@ -19,14 +19,15 @@ class User(models.Model):
     #     tag = self.user_tag + f"${self.f_name[0:2].lower()}{self.l_name[0:2].lower()}{random_num}"
     #     return tag
 
-class sentInvites(models.Model):
-    choices = [("P", "PENDING"), ("A", "ACCEPTED"), ("D", "DECLINED")]
-    sent_to = models.CharField(max_length=7, editable=False) # User tag
-    invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
+    # home/users/$adhi76/
+    # home/sent_invites -> list of invites
+    # home/received_invites
 
-class receivedInvites(models.Model):
+
+class invites(models.Model):
     choices = [("P", "PENDING"), ("A", "ACCEPTED"), ("D", "DECLINED")]
-    from_user = models.CharField(max_length=7, editable=False) # User tag
+    sent_to = models.CharField(max_length=7) # User tag
+    from_user = models.CharField(max_length=7) # User tag
     invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
 
 
