@@ -22,5 +22,8 @@ class InviteSerializer(serializers.ModelSerializer):
 class FriendSerializer(serializers.ModelSerializer):
     class Meta:
         model = friend
-        fields = "__all__"
+        fields = [
+            "my_tag",
+            "friend_tag"
+        ]
 

@@ -10,8 +10,9 @@ urlpatterns = [
     path("users/<str:username>/update", views.update_user),
     path("invites", views.list_of_invites),
     path("invites/create", views.create_invites),
-    path("invites/<int:pk>/update", views.update_invites),
+    path("invites/<str:invite_id>/delete", views.delete_invite),
+    path("invites/<str:invite_id>/update", views.update_invites),
     path("users/<str:username>/friends", views.list_friends),
-    path("users/<str:username>/friends/create", views.create_friends)
+    path("users/<str:username>/friends/create", views.create_friends),
 ]
 

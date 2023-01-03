@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from .models import User, invites, friend
 from .serializer import UserSerializer, InviteSerializer, FriendSerializer
-
+from rest_framework import request
 
 # USER branch
 class createUser(generics.CreateAPIView):
@@ -83,18 +83,42 @@ class updateInvites(generics.UpdateAPIView):
     queryset = invites.objects.all()
     serializer_class = InviteSerializer
     permission_classes = [permissions.IsAuthenticated]
-    lookup_field = "pk"
+    lookup_field = "invite_id"
+    lookup_url_kwarg = "invite_id"
 
 update_invites = updateInvites.as_view()
+
+class deleteInvites(generics.DestroyAPIView):
+    """Delete invite when its status is equivalent to ACCEPTED"""
+    queryset = invites.objects.all()
+    serializer_class = InviteSerializer
+    permission_classes = [permissions.IsAdminUser]
+    lookup_field = "invite_id"
+    lookup_url_kwarg = "invite_id"
+
+delete_invite = deleteInvites.as_view()
 
 
 # FRIENDS branch
 class listFriends(generics.ListAPIView):
-    queryset = friend.objects.all()
+    # queryset = friend.objects.all().filter(my_tag=get_path_var).values()
+
+    def get_queryset(self):
+        my_tag  = User.objects.get(usertag=self.kwargs["username"])
+        print(my_tag.usertag)
+        return friend.objects.filter(my_tag=my_tag.usertag)
     serializer_class = FriendSerializer  
     permission_classes = [permissions.IsAuthenticated]
     lookup_field = "my_tag"
+
     lookup_url_kwarg = "username"
+
+# class FriendListAPIView(ListAPIView):
+   # serializer_class = FriendSerializer
+
+    #def get_queryset(self):
+        #user = User.objects.get(usertag=self.kwargs['usertag'])
+        #return Friend.objects.filter(my_tag=user)
 
 list_friends = listFriends.as_view()
 
