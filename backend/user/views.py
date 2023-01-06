@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
-from .models import User, invites, friend
-from .serializer import UserSerializer, InviteSerializer, FriendSerializer
+from .models import User, invites, friend, Notifications
+from .serializer import UserSerializer, InviteSerializer, FriendSerializer, NotificationSerializer
 from rest_framework import request
 
 # USER branch
@@ -132,3 +132,26 @@ class createFriends(generics.CreateAPIView):
     lookup_url_kwarg = "username"
 
 create_friends = createFriends.as_view()
+
+class Notification(generics.ListAPIView):
+    """View a specific user's filtered notification objects"""
+    def get_queryset(self):
+        return Notifications.objects.filter(targeted_user=self.kwargs["username"])
+    serializer_class = NotificationSerializer
+    lookup_field = "username"
+    lookup_url_kwarg = "username"
+
+user_notification = Notification.as_view()
+
+class createNotifications(generics.CreateAPIView):
+    queryset = Notifications.objects.all()
+    serializer_class = NotificationSerializer
+
+create_notification = createNotifications.as_view()
+
+
+class allNotifications(generics.ListAPIView):
+    queryset = Notifications.objects.all()
+    serializer_class = NotificationSerializer
+
+list_notification = allNotifications.as_view()

@@ -14,5 +14,7 @@ urlpatterns = [
     path("helpzone/communication", views.communication_list),
     path("helpzone/<str:question_id>/update", views.update_questions),
     path("helpzone/<str:question_id>/delete", views.delete_questions),
-    path("helpzone/<str:question_id>", views.detail_questiongit),
+    path("helpzone/<str:question_id>", views.detail_question),
+    path("helpzone/<str:answer_id>", views.detail_answer),
+    path("helpzone/answers/all_answers", views.all_answer)
 ]

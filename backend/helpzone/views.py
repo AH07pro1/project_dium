@@ -105,3 +105,19 @@ class DetailQuestion(generics.RetrieveAPIView):
 
 detail_question = DetailQuestion.as_view()
 
+class DetailAnswer(generics.ListAPIView):
+    queryset = Answer.objects.all()
+    serializer_class = AnswerSerializer
+    lookup_field = "answer_id"
+    lookup_url_kwarg = "answer_id"
+
+detail_answer = DetailAnswer.as_view()
+
+
+class AllAnswer(generics.ListAPIView):
+    queryset = Answer.objects.all()
+    serializer_class = AnswerSerializer
+
+all_answer = AllAnswer.as_view()
+
+

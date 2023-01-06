@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, invites, friend
+from .models import User, invites, friend, Notifications
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,4 +26,11 @@ class FriendSerializer(serializers.ModelSerializer):
             "my_tag",
             "friend_tag"
         ]
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notifications
+        fields = "__all__"
+
 

@@ -3,6 +3,8 @@ from . import views
 
 
 urlpatterns = [
+    path("notifications", views.list_notification),
+    path("notifications/create", views.create_notification),
     path("users/", views.list_user),
     path("users/create", views.create_user),
     path("users/<str:username>", views.retrieve_user),
@@ -14,5 +16,7 @@ urlpatterns = [
     path("invites/<str:invite_id>/update", views.update_invites),
     path("users/<str:username>/friends", views.list_friends),
     path("users/<str:username>/friends/create", views.create_friends),
+    path("users/<str:username>/notifications", views.user_notification),
+
 ]
 

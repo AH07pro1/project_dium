@@ -26,3 +26,8 @@ class friend(models.Model):
     # @property
     # def my_tag(self):
     #     return self.fk.usertag
+
+class Notifications(models.Model):
+    targeted_user = models.CharField(max_length=7, default="aabb11", primary_key=True)
+    message = models.CharField(max_length=100, default="notification")
+    received = models.BooleanField(default=False)

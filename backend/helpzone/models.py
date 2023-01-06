@@ -20,7 +20,8 @@ class Question(models.Model):
 # answer
 class Answer(models.Model):
     answerer = models.CharField(max_length=30)
-    answerer_id = models.CharField(max_length=7, primary_key=True) # aabb11
-    answered_qn = models.CharField(max_length=7) # artpo78989(question id)
+    answer_id = models.CharField(max_length=7, primary_key=True) # aabb11
+    answered_qn_id = models.CharField(max_length=7) # artpo78989(question id)
     body = models.TextField()
     accepted = models.BooleanField(default=False)
+
