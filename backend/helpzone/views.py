@@ -35,6 +35,14 @@ class HistoryList(generics.ListAPIView):
 
 history_list = HistoryList.as_view()
 
+class ArtList(generics.ListAPIView):
+    """All questions instances that have the history category"""
+    queryset = Question.objects.filter(subject = "Art")
+    serializer_class = QuestionSerializer
+
+art_list = ArtList.as_view()
+
+
 class EthicsList(generics.ListAPIView):
     """All questions instances that have the ethics category"""
     queryset = Question.objects.filter(subject = "Ethics")
@@ -112,6 +120,14 @@ class DetailAnswer(generics.ListAPIView):
     lookup_url_kwarg = "answer_id"
 
 detail_answer = DetailAnswer.as_view()
+
+class UpdateAnswer(generics.UpdateAPIView):
+    queryset = Answer.objects.all()
+    serializer_class = AnswerSerializer
+    lookup_field = "answer_id"
+    lookup_url_kwarg = "answer_id"
+
+update_answer = UpdateAnswer.as_view()
 
 
 class AllAnswer(generics.ListAPIView):
