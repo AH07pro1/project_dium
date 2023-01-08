@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'user',
-    'helpzone'
+    'helpzone',
+    'shrt_trm_ch'
 ]
 
 MIDDLEWARE = [
