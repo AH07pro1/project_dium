@@ -29,9 +29,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'user',
     'helpzone',
-    'shrt_trm_ch'
+    'shrt_trm_ch',
+    'rest_framework.authtoken',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',

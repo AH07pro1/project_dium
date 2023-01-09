@@ -2,6 +2,15 @@ from rest_framework import generics, permissions
 from .models import User, invites, friend, Notifications
 from .serializer import UserSerializer, InviteSerializer, FriendSerializer, NotificationSerializer
 from rest_framework import request
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class Home(APIView):
+    def get(self, request):
+        message = {"Welcome:":"Welcome to DIUM's API"}
+        return Response(message)
+
+home = Home.as_view()
 
 # USER branch
 class createUser(generics.CreateAPIView):
