@@ -1,30 +1,47 @@
 from rest_framework import generics
-from .models import ShrtTrmCh
+from .models import SentShrtTrmCh, ReceivedShrtTrmCh
 from .serializer import SendShrtTrmSerializer, ReceivedShrtTrmSerializer
 
-# Create your views here.
+
+# Sent Challenges branch
 class AllSentChallenges(generics.ListAPIView):
-    queryset = ShrtTrmCh.objects.all()
+    queryset = SentShrtTrmCh.objects.all()
     serializer_class = SendShrtTrmSerializer
 
 all_sent_challenges = AllSentChallenges.as_view()
 
-class CreateChallenge(generics.CreateAPIView):
-    queryset = ShrtTrmCh.objects.all()
+class CreateSentChallenges(generics.CreateAPIView):
+    queryset = SentShrtTrmCh.objects.all()
     serializer_class = SendShrtTrmSerializer
 
-create_challenge = CreateChallenge.as_view()
+create_sent_challenges = CreateSentChallenges.as_view()
+
+class DetailSentChallenge(generics.RetrieveAPIView):
+    queryset = SentShrtTrmCh.objects.all()
+    serializer_class = SendShrtTrmSerializer
+    lookup_field = "challenge_id"
+    lookup_url_kwarg = "challenge_id"
+
+detail_sent_challenge = DetailSentChallenge.as_view()
+
+# Received Challenge Branch
 
 class AllReceivedChallenges(generics.ListAPIView):
-    queryset = ShrtTrmCh.objects.all()
+    queryset = ReceivedShrtTrmCh.objects.all()
     serializer_class = ReceivedShrtTrmSerializer
 
 all_received_challenges = AllReceivedChallenges.as_view()
 
-class DetailReceivedChallenges(generics.RetrieveAPIView):
-    queryset = ShrtTrmCh.objects.all()
+class CreateReceivedChallenges(generics.CreateAPIView):
+    queryset = ReceivedShrtTrmCh.objects.all()
     serializer_class = ReceivedShrtTrmSerializer
-    lookup_field = "to_user"
-    lookup_url_kwarg = "to_user"
 
-detail_received_challenges = DetailReceivedChallenges.as_view()
+create_received_challenges = CreateReceivedChallenges.as_view()
+
+class DetailReceivedChallenge(generics.RetrieveAPIView):
+    queryset = ReceivedShrtTrmCh.objects.all()
+    serializer_class = ReceivedShrtTrmSerializer
+    lookup_field = "challenge_id"
+    lookup_url_kwarg = "challenge_id"
+
+detail_received_challenge = DetailReceivedChallenge.as_view()
