@@ -7,7 +7,9 @@ from rest_framework.response import Response
 
 class Home(APIView):
     def get(self, request):
-        message = {"Welcome:":"Welcome to DIUM's API"}
+        message = {
+            "Welcome:":"Welcome to DIUM's API\n\n helpzone -> '/helpzone' users -> '/users'  'short_challenges/...'"
+        }
         return Response(message)
 
 home = Home.as_view()
