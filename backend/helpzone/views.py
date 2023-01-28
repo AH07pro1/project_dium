@@ -136,4 +136,9 @@ class AllAnswer(generics.ListAPIView):
 
 all_answer = AllAnswer.as_view()
 
+class AllQuestions(generics.ListAPIView):
+    queryset = Question.objects.all()
+    serializer_class =  QuestionSerializer
+
+all_questions = AllQuestions.as_view()
 

@@ -3,8 +3,9 @@ from . import views
 
 
 urlpatterns = [
-    path("helpzone/create_question", views.create_question),
+    path("helpzone", views.all_questions),
     path("helpzone/create_answer", views.create_answer),
+    path("helpzone/create_question", views.create_question),
     path("helpzone/math", views.math_list),
     path("helpzone/art", views.art_list),
     path("helpzone/history", views.history_list),
