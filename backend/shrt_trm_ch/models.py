@@ -13,7 +13,7 @@ class SentShrtTrmCh(models.Model):
     subject = models.CharField(choices=SUBJECT_CHOICES,  max_length=40)
     category = models.CharField(default=None, max_length=50)
     description = models.TextField()
-    score = models.JSONField(default=["nothing"], null=True, blank=True, unique=False)
+    scores = models.JSONField(default=list)
 
 class ReceivedShrtTrmCh(models.Model):
     SUBJECT_CHOICES = (("Mathematics", "M"), ("History", "H"), ("Ethics", "E"), ("Science", "S"), ("Geography", "G"), ("Languages", "L"), ("Art", "A"), ("Communication/personal_help", "C"))

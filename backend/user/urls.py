@@ -18,4 +18,6 @@ urlpatterns = [
     path("users/<str:username>/friends", views.list_friends),
     path("users/<str:username>/friends/create", views.create_friends),
     path("users/<str:username>/notifications", views.user_notification),
+
 ]
+

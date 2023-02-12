@@ -46,17 +46,10 @@ class DetailReceivedChallenge(generics.RetrieveAPIView):
 
 detail_received_challenge = DetailReceivedChallenge.as_view()
 
-class DeleteSentChallenge(generics.DestroyAPIView):
-    queryset = SentShrtTrmCh.objects.all()
-    serializer_class = SendShrtTrmSerializer
-    lookup_field = "challenge_id"
-    lookup_url_kwarg = "challenge_id"
-delete_sent_challenge = DeleteSentChallenge.as_view()
-
-class UpdateSentChallenge(generics.UpdateAPIView):
-    queryset = SentShrtTrmCh.objects.all()
+class UpdateSentShrtCh(generics.UpdateAPIView):
+    queryset = SendShrtTrmSerializer
     serializer_class = SendShrtTrmSerializer
     lookup_field = "challenge_id"
     lookup_url_kwarg = "challenge_id"
 
-update_sent_challenge = UpdateSentChallenge.as_view()
+update_sent_shrt_ch = UpdateSentShrtCh.as_view()

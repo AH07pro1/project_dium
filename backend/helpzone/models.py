@@ -16,7 +16,7 @@ class Question(models.Model):
     category_subject = models.CharField(max_length=15) # litterature, algebra
     answered = models.BooleanField(default=False)
     answers = models.JSONField(default=dict, null=True, blank=True)
-    image = models.ImageField(width_field=None, height_field=None, blank=True, null=True)
+    image = models.ImageField(width_field=None, height_field=None, blank=True)
     time_published = models.DateField(auto_now=True)
     asker_level =  models.IntegerField(default=1)
 
