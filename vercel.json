@@ -1,7 +1,7 @@
 {
     "builds": [
         {
-            "src": "backend/wsgi.py",
+            "src": "main_api/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
@@ -11,8 +11,20 @@
     ],
     "routes": [
         {
+            "src": "/static/(.*)",
+            "dest": "static/$1"
+        },
+        {
+            "src": "/media/(.*)",
+            "dest": "media/$1"
+        },
+        {
             "src": "/(.*)",
-            "destination": "/"
+            "dest": "main_api/wsgi.py"
         }
-    ]
+    ],
+    "env": {
+        "PYTHONUNBUFFERED": "true",
+        "DJANGO_SETTINGS_MODULE": "main_api.settings"
+    }
 }
