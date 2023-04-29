@@ -1,9 +1,14 @@
 from rest_framework import generics, permissions
-from .models import User, invites, friend, Notifications
+from .models import User, invites, friend, Notification
 from .serializer import UserSerializer, InviteSerializer, FriendSerializer, NotificationSerializer
 from rest_framework import request
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+from .models import Notification, User
 
 
 class Home(APIView):
@@ -34,7 +39,6 @@ class listUser(generics.ListAPIView):
     """Display the list of all User instances"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAdminUser]
 
 
 list_user = listUser.as_view()
@@ -47,8 +51,6 @@ class retrieveUser(generics.RetrieveAPIView):
     lookup_field = "usertag"
     lookup_url_kwarg = "username"
 
-    permission_classes = [permissions.IsAuthenticated]
-
 
 retrieve_user = retrieveUser.as_view()
 
@@ -59,7 +61,6 @@ class deleteUser(generics.DestroyAPIView):
     serializer_class = UserSerializer
     lookup_field = "usertag"
     lookup_url_kwarg = "username"
-    permission_classes = [permissions.IsAdminUser]
 
 
 delete_user = deleteUser.as_view()
@@ -71,7 +72,6 @@ class updateUser(generics.UpdateAPIView):
     serializer_class = UserSerializer
     lookup_field = "usertag"
     lookup_url_kwarg = "username"
-    permission_classes = [permissions.IsAuthenticated]
 
 
 update_user = updateUser.as_view()
@@ -82,7 +82,6 @@ class listInvites(generics.ListAPIView):
     """List of all invites in the application"""
     queryset = invites.objects.all()
     serializer_class = InviteSerializer
-    permission_classes = [permissions.IsAdminUser]
 
 
 list_of_invites = listInvites.as_view()
@@ -92,7 +91,6 @@ class createInvites(generics.CreateAPIView):
     """Create an invite; specify the one who sends the invites, the one who receives it and the invite status"""
     queryset = invites.objects.all()
     serializer_class = InviteSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
 create_invites = createInvites.as_view()
@@ -102,7 +100,6 @@ class updateInvites(generics.UpdateAPIView):
     """Update an invite, more specifically its status attribute"""
     queryset = invites.objects.all()
     serializer_class = InviteSerializer
-    permission_classes = [permissions.IsAuthenticated]
     lookup_field = "invite_id"
     lookup_url_kwarg = "invite_id"
 
@@ -114,7 +111,6 @@ class deleteInvites(generics.DestroyAPIView):
     """Delete invite when its status is equivalent to ACCEPTED"""
     queryset = invites.objects.all()
     serializer_class = InviteSerializer
-    permission_classes = [permissions.IsAdminUser]
     lookup_field = "invite_id"
     lookup_url_kwarg = "invite_id"
 
@@ -132,11 +128,20 @@ class listFriends(generics.ListAPIView):
         return friend.objects.filter(my_tag=my_tag.usertag)
 
     serializer_class = FriendSerializer
-    permission_classes = [permissions.IsAuthenticated]
     lookup_field = "my_tag"
 
     lookup_url_kwarg = "username"
 
+
+class deleteFriend(generics.DestroyAPIView):
+    """Delete invite when its status is equivalent to ACCEPTED"""
+    queryset = friend.objects.all()
+    serializer_class = FriendSerializer
+    lookup_field = "friend_tag"
+    lookup_url_kwarg = "friend_tag"
+
+
+delete_friend = deleteFriend.as_view()
 
 # class FriendListAPIView(ListAPIView):
 # serializer_class = FriendSerializer
@@ -153,7 +158,6 @@ class createFriends(generics.CreateAPIView):
     it will append the from_to user(the one who accepted the invite)."""
     queryset = friend.objects.all()
     serializer_class = FriendSerializer
-    permission_classes = [permissions.IsAuthenticated]
     lookup_field = "my_tag"
     lookup_url_kwarg = "username"
 
@@ -161,23 +165,21 @@ class createFriends(generics.CreateAPIView):
 create_friends = createFriends.as_view()
 
 
-class Notification(generics.ListAPIView):
+class NotificationList(generics.ListAPIView):
     """View a specific user's filtered notification objects"""
 
-    def get_queryset(self):
-        return Notifications.objects.filter(
-            targeted_user=self.kwargs["username"])
+    queryset = Notification.objects.all()
 
     serializer_class = NotificationSerializer
     lookup_field = "username"
     lookup_url_kwarg = "username"
 
 
-user_notification = Notification.as_view()
+user_notification = NotificationList.as_view()
 
 
 class createNotifications(generics.CreateAPIView):
-    queryset = Notifications.objects.all()
+    queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
 
 
@@ -185,8 +187,18 @@ create_notification = createNotifications.as_view()
 
 
 class allNotifications(generics.ListAPIView):
-    queryset = Notifications.objects.all()
+    queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
 
 
 list_notification = allNotifications.as_view()
+
+
+class deleteNotification(generics.DestroyAPIView):
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
+    lookup_field = "id"
+    lookup_url_kwarg = "id"
+
+
+delete_notification = deleteNotification.as_view()

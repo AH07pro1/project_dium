@@ -9,6 +9,6 @@ urlpatterns = [
     path("um_compete_challenges/all_challenges/<str:challenge_id>/update",
          views.update_um_challenge),
     path("um_compete_challenges/all_challenges/<str:challenge_id>/delete",
-         views.delete_um_challene),
+         views.delete_um_challenge),
     path("um_compete_challenges/create", views.create_um_compete_challenge),
 ]

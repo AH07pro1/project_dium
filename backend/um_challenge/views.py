@@ -58,6 +58,4 @@ class Delete_Um_Challenge(generics.DestroyAPIView):
     lookup_url_kwarg = "challenge_id"
 
 
-delete_um_challene = Delete_Um_Challenge.as_view()
-
-
+delete_um_challenge = Delete_Um_Challenge.as_view()

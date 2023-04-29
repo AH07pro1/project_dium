@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class User(models.Model):
     f_name = models.CharField(max_length=15)
     l_name = models.CharField(max_length=15)
@@ -8,14 +9,17 @@ class User(models.Model):
     profile_pic = models.URLField()
     email = models.EmailField(max_length=100)
     password = models.CharField(max_length=25)
+    xp = models.IntegerField(default=0)
 
 
 class invites(models.Model):
     invite_id = models.CharField(max_length=8, primary_key=True)
     choices = [("P", "PENDING"), ("A", "ACCEPTED"), ("D", "DECLINED")]
-    sent_to = models.CharField(max_length=7) 
-    from_user = models.CharField(max_length=7) 
-    invite_status = models.CharField(choices=choices, default=choices[0], max_length=9)
+    sent_to = models.CharField(max_length=7)
+    from_user = models.CharField(max_length=7)
+    invite_status = models.CharField(choices=choices,
+                                     default=choices[0],
+                                     max_length=9)
 
 
 # USE Foreign KEYS
@@ -27,7 +31,10 @@ class friend(models.Model):
     # def my_tag(self):
     #     return self.fk.usertag
 
-class Notifications(models.Model):
-    targeted_user = models.CharField(max_length=7, default="aabb11", primary_key=True)
-    message = models.CharField(max_length=100, default="notification")
-    received = models.BooleanField(default=False)
+
+class Notification(models.Model):
+    notification_id = models.IntegerField(default=0)
+    from_user = models.CharField(max_length=10, default="aabb69")
+    message = models.CharField(max_length=200)
+    sent_to = models.JSONField(default=list)
+    url = models.CharField(max_length=1000, default="/")

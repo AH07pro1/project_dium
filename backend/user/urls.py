@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
     path("", views.home),
     path("notifications", views.list_notification),
@@ -17,7 +16,8 @@ urlpatterns = [
     path("invites/<str:invite_id>/update", views.update_invites),
     path("users/<str:username>/friends", views.list_friends),
     path("users/<str:username>/friends/create", views.create_friends),
-    path("users/<str:username>/notifications", views.user_notification),
-
+    path("users/<str:username>/friends/<str:friend_tag>/delete",
+         views.delete_friend),
+    path("users/notifications", views.user_notification),
+    path("notifications/<int:id>/delete", views.delete_notification),
 ]
-

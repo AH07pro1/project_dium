@@ -8,13 +8,17 @@ class AllSentChallenges(generics.ListAPIView):
     queryset = SentShrtTrmCh.objects.all()
     serializer_class = SendShrtTrmSerializer
 
+
 all_sent_challenges = AllSentChallenges.as_view()
+
 
 class CreateSentChallenges(generics.CreateAPIView):
     queryset = SentShrtTrmCh.objects.all()
     serializer_class = SendShrtTrmSerializer
 
+
 create_sent_challenges = CreateSentChallenges.as_view()
+
 
 class DetailSentChallenge(generics.RetrieveAPIView):
     queryset = SentShrtTrmCh.objects.all()
@@ -22,21 +26,37 @@ class DetailSentChallenge(generics.RetrieveAPIView):
     lookup_field = "challenge_id"
     lookup_url_kwarg = "challenge_id"
 
+
 detail_sent_challenge = DetailSentChallenge.as_view()
 
+
+class DeleteSentChallenge(generics.DestroyAPIView):
+    queryset = SentShrtTrmCh.objects.all()
+    serializer_class = SendShrtTrmSerializer
+    lookup_field = "challenge_id"
+    lookup_url_kwarg = "challenge_id"
+
+
+delete_sent_challenge = DeleteSentChallenge.as_view()
+
 # Received Challenge Branch
+
 
 class AllReceivedChallenges(generics.ListAPIView):
     queryset = ReceivedShrtTrmCh.objects.all()
     serializer_class = ReceivedShrtTrmSerializer
 
+
 all_received_challenges = AllReceivedChallenges.as_view()
+
 
 class CreateReceivedChallenges(generics.CreateAPIView):
     queryset = ReceivedShrtTrmCh.objects.all()
     serializer_class = ReceivedShrtTrmSerializer
 
+
 create_received_challenges = CreateReceivedChallenges.as_view()
+
 
 class DetailReceivedChallenge(generics.RetrieveAPIView):
     queryset = ReceivedShrtTrmCh.objects.all()
@@ -44,12 +64,15 @@ class DetailReceivedChallenge(generics.RetrieveAPIView):
     lookup_field = "challenge_id"
     lookup_url_kwarg = "challenge_id"
 
+
 detail_received_challenge = DetailReceivedChallenge.as_view()
 
+
 class UpdateSentShrtCh(generics.UpdateAPIView):
-    queryset = SendShrtTrmSerializer
+    queryset = SentShrtTrmCh.objects.all()
     serializer_class = SendShrtTrmSerializer
     lookup_field = "challenge_id"
     lookup_url_kwarg = "challenge_id"
+
 
 update_sent_shrt_ch = UpdateSentShrtCh.as_view()
