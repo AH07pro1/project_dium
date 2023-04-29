@@ -147,11 +147,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", "http://127.0.0.1:3000", "http://dium.netlify.app"
+]
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = ('http://localhost:3000', 'http://localhost:8000')
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+CORS_ORIGIN_WHITELIST = ('http://localhost:3000', 'http://localhost:8000',
+                         'http://dium.netlify.app')
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000,http://dium.netlify.app"]
 
 CSRF_COOKIE_NAME = "csrftoken"
