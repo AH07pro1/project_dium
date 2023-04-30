@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "main_api/wsgi.py",
+            "src": "backend/main_api/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
@@ -10,7 +10,7 @@
             }
         },
         {
-            "src": "backend/build_files.sh",
+            "src": "build_files.sh",
             "use": "@now/static-build"
         }
     ],
@@ -21,7 +21,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "main_api/wsgi.py"
+            "dest": "backend/main_api/wsgi.py"
         }
     ]
 }
