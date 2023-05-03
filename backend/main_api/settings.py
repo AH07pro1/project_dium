@@ -157,7 +157,7 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = ('http://localhost:3000', 'http://localhost:8000',
-                         'http://dium.netlify.app')
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000,http://dium.netlify.app"]
+                         'https://dium.netlify.app')
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000,https://dium.netlify.app"]
 
 CSRF_COOKIE_NAME = "csrftoken"
