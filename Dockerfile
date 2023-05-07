@@ -12,8 +12,14 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-ADD . /app
+# Copy the project files into the container
+COPY . .
 
-RUN pip install -r requirements.txt
+# Install project dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Change to the project directory
+WORKDIR /project_dium/backend
+
+# Run database migrations and start the server
 CMD python manage.py migrate && gunicorn configurations.wsgi
