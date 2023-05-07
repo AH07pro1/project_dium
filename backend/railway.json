@@ -1,0 +1,30 @@
+{
+    "name": "project_dium",
+    "build": {
+        "buildpacks": [
+            {
+                "id": "python",
+                "version": "3.8"
+            },
+            {
+                "id": "railway/nodejs",
+                "version": "14.17.1"
+            }
+        ]
+    },
+    "routes": [
+        {
+            "src": "^/.*",
+            "dest": "/backend/manage.py"
+        }
+    ],
+    "env": {
+        "DJANGO_SETTINGS_MODULE": "backend.main_api.settings",
+        "SECRET_KEY": "django-insecure-a$hbb2#x5wcbge@qu^0gal22w(7)n4$)do&rdhu7ihb)suv@s5",
+        "DEBUG": false,
+        "DATABASE_URL": "sqlite:////backend/db.sqlite3"
+    },
+    "deploy": {
+        "memory": 512
+    }
+}
