@@ -1,5 +1,4 @@
 {
-    "version": 2,
     "builds": [
         {
             "src": "main_api/wsgi.py",
@@ -12,7 +11,4 @@
             "dest": "main_api/wsgi.py"
         }
     ],
-    "env": {
-        "DJANGO_SETTINGS_MODULE": "main_api.settings"
-    }
 }
