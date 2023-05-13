@@ -1,1 +1,0 @@
-web: gunicorn project_dium.backend.main_api.wsgi
