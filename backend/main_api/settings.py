@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a$hbb2#x5wcbge@qu^0gal22w(7)n4$)do&rdhu7ihb)suv@s5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  #True
+DEBUG = True  #True
 
 ALLOWED_HOSTS = ["*"]  #"localhost",
 
@@ -151,13 +151,13 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000", "http://127.0.0.1:3000", "http://dium.netlify.app","https://7bee-70-27-225-219.ngrok.io"
+    "http://localhost:3000", "http://127.0.0.1:3000", "http://dium.netlify.app"
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = ('http://localhost:3000', 'http://localhost:8000',
                          'https://dium.netlify.app')
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000,https://dium.netlify.app"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://dium.netlify.app"]
 
 CSRF_COOKIE_NAME = "csrftoken"
