@@ -1,1 +1,3 @@
+web: npm run start
+
 web: gunicorn main_api.wsgi --log-file -
