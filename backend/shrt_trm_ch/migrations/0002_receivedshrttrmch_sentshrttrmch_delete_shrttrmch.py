@@ -26,6 +26,7 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name='SentShrtTrmCh',
+            
             fields=[
                 ('challenge_id', models.CharField(max_length=11, primary_key=True, serialize=False)),
                 ('title', models.CharField(default='Short Term Challenge', max_length=50)),
