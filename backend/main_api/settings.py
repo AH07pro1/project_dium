@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'shrt_trm_ch',
     'um_challenge',
     'rest_framework.authtoken',
+    
 ]
 
 REST_FRAMEWORK = {
