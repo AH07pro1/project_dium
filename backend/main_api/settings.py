@@ -35,8 +35,11 @@ INSTALLED_APPS = [
     'shrt_trm_ch',
     'um_challenge',
     'rest_framework.authtoken',
+    'django_crontab'
+   
     
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -164,3 +167,8 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://dium.netlify.app"]
 CSRF_COOKIE_NAME = "csrftoken"
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CRONJOBS = [
+    ('27 17 * * *', 'django.core.management.call_command', ['qtd_handle'], {'settings': 'backend.settings'})
+
+]

@@ -2,12 +2,12 @@
 django-cors-headers==3.13.0
 djangorestframework==3.14.0
 django==4.0.0
-djangorestframework
+#djangorestframework
 pyyaml
 requests
 gunicorn==20.0.4
-django-cors-headers
+#django-cors-headers
 Pillow
-psycopg2
 psycopg2-binary==2.9.1
 channels==3.0.5
+django-crontab==0.7.1

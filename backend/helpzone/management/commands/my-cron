@@ -1,0 +1,1 @@
+59 23 * * * root /bin/bash /usr/app/run_cronjob.sh

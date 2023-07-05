@@ -31,6 +31,10 @@ class Question(models.Model):
     time_published = models.DateField(auto_now=True)
     asker_level = models.IntegerField(default=1)
     profile = models.URLField(default="")
+    isQuestionOftheDay = models.BooleanField(default=False)
+    votes = models.IntegerField(default=0)
+    vote_record = models.JSONField(default=list, null=True, blank=True)
+    isArchived = models.BooleanField(default=False)
 
 
 # answer
